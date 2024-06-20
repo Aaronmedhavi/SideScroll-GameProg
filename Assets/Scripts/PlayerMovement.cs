@@ -8,45 +8,45 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 3f;
 
     private Rigidbody2D rb;
-
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
     void Start()
     {
-        // Ambil komponen rigidbody dari objek player
         rb = GetComponent<Rigidbody2D>();
-
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
-
-    //sprite flip ini berguna untuk mengubah hadapan player
     private void SpriteFlip(float horizontalInput)
     {
         if (horizontalInput < 0)
         {
-            spriteRenderer.flipX = false;
-        }
-        else
-        {
             spriteRenderer.flipX = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
-
-
     void FixedUpdate()
     {
-        // Menggerakan player ke kanan atau kiri menggunakan transform.translate
         float horizontalInput = Input.GetAxis("Horizontal");
+
+        // Set the Speed parameter in the animator
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        // Move the character
         transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0f, 0f));
+
+        // Flip the character sprite
         SpriteFlip(horizontalInput);
 
-
-        // Mengaktifkan lompatan player jika player menyentuh tanah
+        // Handle jumping
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-
         }
     }
 }
