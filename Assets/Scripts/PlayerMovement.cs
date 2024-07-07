@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void PlayJump()
     {
         animator.SetTrigger("goJump");
+        AudioManager.Instance.PlayJumpSound();
     }
 
     private void PlayAttack()
@@ -51,10 +52,9 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("goAttack");
-
+        AudioManager.Instance.PlayAttackSound();
         // Wait for the attack animation to finish
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
         isAttacking = false;
     }
     #endregion
@@ -74,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-
         // Only allow movement if not attacking
         if (!isAttacking)
         {
@@ -83,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             UpdateAnimationState(Mathf.Abs(horizontalInput) > 0.01f);
         }
 
+        // Restored original jump logic
         if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);

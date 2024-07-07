@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isStart;
     public int levelCurrent;
     public bool shouldShowLevelPanel;
-    public bool isLevelCompleted; // New flag to indicate level completion
+    public bool isLevelCompleted;
 
     private LevelData levelData;
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            levelCurrent = 0;
+            levelCurrent = 0; // Start with the first level unlocked
             SaveLevel();
         }
     }
@@ -90,8 +90,6 @@ public class GameManager : MonoBehaviour
             SaveLevel();
             Debug.Log("New level unlocked: " + levelCurrent);
         }
-        isLevelCompleted = true;
-        shouldShowLevelPanel = true;
     }
 
     public void ResetLevel()

@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 public class UIGameplay : MonoBehaviour
 {
-    [Header("Scene Indices")]
+    [Header("Scene Index")]
     [SerializeField] private int menuSceneIndex = 0;
-
     [Header("Gameplay UI Elements")]
     public Button buttonResume;
     public Button buttonPause;
@@ -24,12 +23,10 @@ public class UIGameplay : MonoBehaviour
             buttonMenu.onClick.AddListener(ReturnToLevelSelection);
         else
             Debug.LogError("Menu button is not assigned!");
-
         if (buttonPause != null)
             buttonPause.onClick.AddListener(PauseGame);
         else
             Debug.LogError("Pause button is not assigned!");
-
         if (buttonResume != null)
             buttonResume.onClick.AddListener(ResumeGame);
         else
@@ -39,17 +36,20 @@ public class UIGameplay : MonoBehaviour
     private void PauseGame()
     {
         GameManager.Instance.Pause();
+        AudioManager.Instance.PauseBackgroundMusic();
         ShowPauseUI();
     }
 
     private void ResumeGame()
     {
         GameManager.Instance.Resume();
+        AudioManager.Instance.ResumeBackgroundMusic();
         HidePauseUI();
     }
 
     private void ReturnToLevelSelection()
     {
+        AudioManager.Instance.ResumeBackgroundMusic();
         GameManager.Instance.ReturnToMenu();
     }
 

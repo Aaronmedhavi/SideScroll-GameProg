@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Gear
   - Trigger
+  - Ground
   layers:
   - Default
   - TransparentFX
