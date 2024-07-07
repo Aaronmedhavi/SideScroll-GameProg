@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Objek yang akan diikuti oleh kamera
-    public float smoothSpeed = 0.125f; // Kecepatan pergerakan kamera
+    public Transform target;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
 
-    public Vector3 offset; // Jarak antara kamera dan objek yang diikuti
-
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        // Mengambil posisi kamera saat ini
-        Vector3 desiredPosition = target.position + offset;
+        if (target == null)
+            return;
 
-        // Menghitung posisi kamera yang diinginkan dengan smoothing
+        Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        // Mengatur posisi kamera sesuai dengan yang diinginkan
-        transform.position = new Vector3(smoothedPosition.x, transform.position.y, transform.position.z);
+        transform.position = smoothedPosition;
     }
 }
