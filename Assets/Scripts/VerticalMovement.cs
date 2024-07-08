@@ -6,8 +6,6 @@ namespace BinusNamespace
 {
     public class VerticalMovement : MonoBehaviour
     {
-
-        //public float distanceLow, distanceHigh, speedLow, speedHigh;
         static float t = 0.0f;
         public float distance, speed, timeStart;
         private float originalPosY;

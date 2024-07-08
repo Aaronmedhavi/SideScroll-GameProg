@@ -7,13 +7,11 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
     public bool isPaused;
     public bool isStart;
     public int levelCurrent;
     public bool shouldShowLevelPanel;
     public bool isLevelCompleted;
-
     private LevelData levelData;
 
     void Awake()
@@ -45,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            levelCurrent = 0; // Start with the first level unlocked
+            levelCurrent = 0;
             SaveLevel();
         }
     }
@@ -53,6 +51,14 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+        if (sceneIndex == 0)
+        {
+            AudioManager.Instance.PlayMenuMusic();
+        }
+        else
+        {
+            AudioManager.Instance.PlayBackgroundMusic();
+        }
     }
 
     public void Pause()
@@ -88,7 +94,6 @@ public class GameManager : MonoBehaviour
         {
             levelCurrent = newLevelUnlocked;
             SaveLevel();
-            Debug.Log("New level unlocked: " + levelCurrent);
         }
     }
 

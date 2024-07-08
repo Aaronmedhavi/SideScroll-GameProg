@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerPositionHandler positionHandler;
     private bool isDead = false;
 
-    private void Start()
+    void Start()
     {
         currentHealth = maxHealth;
         OnHealthChanged.Invoke(currentHealth / maxHealth);
@@ -27,13 +28,12 @@ public class PlayerHealth : MonoBehaviour
         positionHandler = GetComponent<PlayerPositionHandler>();
     }
 
-    private void Update()
+    void Update()
     {
         // Test key to reduce health
         if (Input.GetKeyDown(KeyCode.T) && !isDead)
         {
             TakeDamage(testDamageAmount);
-            Debug.Log($"Player took {testDamageAmount} damage. Current health: {currentHealth}");
         }
     }
 
@@ -63,7 +63,6 @@ public class PlayerHealth : MonoBehaviour
         playerMovement.enabled = false;
         animator.SetTrigger("goDeath");
         AudioManager.Instance.PlayDeathSound();
-        Debug.Log("Player died. Respawning in " + respawnDelay + " seconds.");
         StartCoroutine(RespawnAfterDelay());
     }
 
@@ -82,7 +81,6 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger("goRespawn");
         positionHandler.ChangePlayerPosition(positionHandler.GetRespawnPosition());
         OnPlayerRespawn.Invoke();
-        Debug.Log("Player respawned at " + transform.position);
     }
 
     public void RespawnAtLastCheckpoint()
@@ -92,21 +90,16 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator RespawnCoroutine()
     {
-        // Disable player movement and play death animation
         playerMovement.enabled = false;
         animator.SetTrigger("goDeath");
         AudioManager.Instance.PlayDeathSound();
         yield return new WaitForSeconds(respawnDelay);
-        // Reset health
         currentHealth = maxHealth;
         OnHealthChanged.Invoke(currentHealth / maxHealth);
-        // Move player to last checkpoint
         Vector2 respawnPosition = positionHandler.GetRespawnPosition();
         transform.position = respawnPosition;
-        // Re-enable player movement and play respawn animation
         playerMovement.enabled = true;
         animator.SetTrigger("goRespawn");
         OnPlayerRespawn.Invoke();
-        Debug.Log("Player respawned at checkpoint: " + transform.position);
     }
 }

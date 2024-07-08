@@ -8,7 +8,7 @@ public class Trap : MonoBehaviour
     private bool hasBeenTriggered = false;
     private Collider2D trapCollider;
 
-    private void Start()
+    void Start()
     {
         trapCollider = GetComponent<Collider2D>();
     }
@@ -21,7 +21,6 @@ public class Trap : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(damageAmount);
-            Debug.Log($"Player hit trap. Damage dealt: {damageAmount}");
             DisableTrap();
         }
     }
@@ -30,6 +29,5 @@ public class Trap : MonoBehaviour
     {
         hasBeenTriggered = true;
         trapCollider.isTrigger = false;
-        Debug.Log("Trap disabled");
     }
 }

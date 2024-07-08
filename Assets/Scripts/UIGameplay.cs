@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +12,10 @@ public class UIGameplay : MonoBehaviour
     public Button buttonPause;
     public Button buttonMenu;
     public GameObject pausePanel;
+    private bool isPaused = false;
 
-    private void Start()
+
+    void Start()
     {
         InitializeButtons();
         HidePauseUI();
@@ -19,18 +23,10 @@ public class UIGameplay : MonoBehaviour
 
     private void InitializeButtons()
     {
-        if (buttonMenu != null)
-            buttonMenu.onClick.AddListener(ReturnToLevelSelection);
-        else
-            Debug.LogError("Menu button is not assigned!");
-        if (buttonPause != null)
-            buttonPause.onClick.AddListener(PauseGame);
-        else
-            Debug.LogError("Pause button is not assigned!");
-        if (buttonResume != null)
-            buttonResume.onClick.AddListener(ResumeGame);
-        else
-            Debug.LogError("Resume button is not assigned!");
+        buttonMenu.onClick.AddListener(ReturnToLevelSelection);
+        buttonPause.onClick.AddListener(PauseGame);
+        buttonResume.onClick.AddListener(ResumeGame);
+
     }
 
     private void PauseGame()
@@ -38,6 +34,8 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.Pause();
         AudioManager.Instance.PauseBackgroundMusic();
         ShowPauseUI();
+        isPaused = true;
+
     }
 
     private void ResumeGame()
@@ -45,6 +43,8 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.Resume();
         AudioManager.Instance.ResumeBackgroundMusic();
         HidePauseUI();
+        isPaused = false;
+
     }
 
     private void ReturnToLevelSelection()
@@ -55,21 +55,34 @@ public class UIGameplay : MonoBehaviour
 
     private void ShowPauseUI()
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        if (buttonPause != null)
-            buttonPause.gameObject.SetActive(false);
-        if (buttonResume != null)
-            buttonResume.gameObject.SetActive(true);
+        pausePanel.SetActive(true);
+        buttonPause.gameObject.SetActive(false);
+        buttonResume.gameObject.SetActive(true);
     }
 
     private void HidePauseUI()
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(false);
-        if (buttonPause != null)
-            buttonPause.gameObject.SetActive(true);
-        if (buttonResume != null)
-            buttonResume.gameObject.SetActive(false);
+        pausePanel.SetActive(false);
+        buttonPause.gameObject.SetActive(true);
+        buttonResume.gameObject.SetActive(false);
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    private void TogglePause()
+    {
+        if (isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
     }
 }

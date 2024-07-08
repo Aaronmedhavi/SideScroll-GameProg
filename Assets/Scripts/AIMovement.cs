@@ -16,36 +16,25 @@ public class AIMovement : MonoBehaviour
     {
         originalPos = transform.position.x;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer component not found on this GameObject!");
-        }
         lastPosition = transform.position.x;
     }
 
     void Update()
     {
-        // Calculate new position
         float newX = originalPos + Mathf.Sin(t) * distance;
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-
-        // Update time
         t += speed * Time.deltaTime;
-
-        // Determine direction and flip sprite if necessary
         if (spriteRenderer != null)
         {
             if (transform.position.x > lastPosition)
             {
-                spriteRenderer.flipX = false; // Moving right, no flip
+                spriteRenderer.flipX = false;
             }
             else if (transform.position.x < lastPosition)
             {
-                spriteRenderer.flipX = true; // Moving left, flip
+                spriteRenderer.flipX = true;
             }
         }
-
-        // Update last position for next frame
         lastPosition = transform.position.x;
     }
 }

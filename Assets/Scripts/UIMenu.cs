@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,35 +27,14 @@ public class UIMenu : MonoBehaviour
         RefreshLevelButtons();
         CheckPanelToShow();
         InitializeResetButton();
+        AudioManager.Instance.PlayMenuMusic();
     }
 
     private void InitializeButtons()
     {
-        if (startButton != null)
-        {
-            startButton.onClick.AddListener(OnStartButtonClick);
-        }
-        else
-        {
-            Debug.LogError("Start button is not assigned in the inspector!");
-        }
-
-        if (quitButton != null)
-        {
-            quitButton.onClick.AddListener(QuitGame);
-        }
-        else
-        {
-            Debug.LogError("Quit button is not assigned in the inspector!");
-        }
-        if (backButton != null)
-        {
-            backButton.onClick.AddListener(OnBackButtonClick);
-        }
-        else
-        {
-            Debug.LogError("Back button is not assigned in the inspector!");
-        }
+        startButton.onClick.AddListener(OnStartButtonClick);
+        quitButton.onClick.AddListener(QuitGame);
+        backButton.onClick.AddListener(OnBackButtonClick);
     }
 
     public void OnStartButtonClick()
@@ -79,10 +60,6 @@ public class UIMenu : MonoBehaviour
         {
             startPanel.SetActive(false);
             levelPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("Start Panel or Level Panel is not assigned in the inspector!");
         }
     }
 
@@ -137,21 +114,10 @@ public class UIMenu : MonoBehaviour
             startPanel.SetActive(true);
             levelPanel.SetActive(false);
         }
-        else
-        {
-            Debug.LogError("Start Panel/Level Panel not assigned");
-        }
     }
     private void InitializeResetButton()
     {
-        if (resetButton != null)
-        {
-            resetButton.onClick.AddListener(ResetGameProgress);
-        }
-        else
-        {
-            Debug.LogError("Reset button is not assigned in the inspector!");
-        }
+        resetButton.onClick.AddListener(ResetGameProgress);
     }
     public void ResetGameProgress()
     {

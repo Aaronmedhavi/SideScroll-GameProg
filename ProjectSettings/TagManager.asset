@@ -9,6 +9,7 @@ TagManager:
   - Gear
   - Trigger
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrapV2 : MonoBehaviour
 {
     [SerializeField] private float damageAmount = 20f;
-    [SerializeField] private float damageInterval = 1f; // Time between damage
+    [SerializeField] private float damageInterval = 1f;
     private float lastDamageTime;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -22,6 +22,5 @@ public class TrapV2 : MonoBehaviour
     {
         playerHealth.TakeDamage(damageAmount);
         lastDamageTime = Time.time;
-        Debug.Log($"Player hit by continuous trap. Damage dealt: {damageAmount}");
     }
 }

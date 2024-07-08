@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -11,12 +13,13 @@ public class AudioManager : MonoBehaviour
 
     [Header("Background Music")]
     public AudioClip backgroundMusic;
+    public AudioClip menuMusic;
 
     [Header("Audio Sources")]
     public AudioSource effectsSource;
     public AudioSource musicSource;
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -29,9 +32,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
-        PlayBackgroundMusic();
+       PlayMenuMusic();
     }
 
     public void PlayJumpSound()
@@ -48,12 +51,25 @@ public class AudioManager : MonoBehaviour
     {
         effectsSource.PlayOneShot(attackSound);
     }
-
-    private void PlayBackgroundMusic()
+    public void PlayBackgroundMusic()
     {
-        musicSource.clip = backgroundMusic;
-        musicSource.loop = true;
-        musicSource.Play();
+        PlayMusic(backgroundMusic);
+    }
+
+    public void PlayMenuMusic()
+    {
+        PlayMusic(menuMusic);
+    }
+
+    private void PlayMusic(AudioClip music)
+    {
+        if (musicSource.clip != music)
+        {
+            musicSource.Stop();
+            musicSource.clip = music;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
     }
 
     public void PauseBackgroundMusic()
@@ -64,5 +80,10 @@ public class AudioManager : MonoBehaviour
     public void ResumeBackgroundMusic()
     {
         musicSource.UnPause();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 }
