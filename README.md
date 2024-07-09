@@ -18,7 +18,7 @@ A Warriors Journey is an exciting 2D sidescroller game developed using the Unity
 
 1. Go to
    ```
-   https://github.com/Aaronmedhavi/SideScroll-GameProg/releases/tag/v0.2.0-alpha)
+   https://github.com/Aaronmedhavi/SideScroll-GameProg/releases/tag/v0.3.0-alpha
    ```
 2. Download the latest release.
 3. Extract the downloaded archive.
