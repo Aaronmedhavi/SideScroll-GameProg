@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +14,19 @@ public class UIGameplay : MonoBehaviour
     public Button buttonMenu;
     public GameObject pausePanel;
     private bool isPaused = false;
+    [Header("Win Panel")]
+    public GameObject winPanel;
+    public TextMeshProUGUI winTimerText;
+    public Button winContinueButton;
 
+    private float levelStartTime;
 
     void Start()
     {
         InitializeButtons();
         HidePauseUI();
+        HideWinUI();
+        levelStartTime = Time.time;
     }
 
     private void InitializeButtons()
@@ -26,6 +34,7 @@ public class UIGameplay : MonoBehaviour
         buttonMenu.onClick.AddListener(ReturnToLevelSelection);
         buttonPause.onClick.AddListener(PauseGame);
         buttonResume.onClick.AddListener(ResumeGame);
+        winContinueButton.onClick.AddListener(ReturnToLevelSelection);
 
     }
 
@@ -49,6 +58,7 @@ public class UIGameplay : MonoBehaviour
 
     private void ReturnToLevelSelection()
     {
+        GameManager.Instance.Resume();
         AudioManager.Instance.ResumeBackgroundMusic();
         GameManager.Instance.ReturnToMenu();
     }
@@ -84,5 +94,16 @@ public class UIGameplay : MonoBehaviour
         {
             PauseGame();
         }
+    }
+    public void ShowWinUI(int nextLevelToUnlock)
+    {
+        float levelTime = Time.time - levelStartTime;
+        winTimerText.text = $"Time: {levelTime:F2} seconds";
+        winPanel.SetActive(true);
+        GameManager.Instance.Pause();
+    }
+    private void HideWinUI()
+    {
+        winPanel.SetActive(false);
     }
 }
