@@ -41,7 +41,6 @@ A Warriors Journey is an exciting 2D sidescroller game developed using the Unity
 - Jump: Spacebar
 - Attack: Left Mouse Button
 - Pause: Escape
-- Take Damage(Debugging purposes): T
 - Reset Progress(In main menu) Ctrl + R
 
 ## Contact
