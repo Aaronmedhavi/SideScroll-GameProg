@@ -11,17 +11,6 @@ A Warriors Journey is an exciting 2D sidescroller game developed using the Unity
 3. Extract the downloaded archive.
 4. Run the game executable.
 
-## 📁 Option 2: Clone the Repository
-
-1. Make sure you have Unity (version 2022.3.9f1 or later) installed on your machine.
-2. Clone this repository:
-   ```
-   git clone https://github.com/Aaronmedhavi/SideScroll-GameProg.git
-   ```
-3. Open the project in Unity.
-4. Open the "MainMenu" scene located in the "Assets/Scenes" folder.
-5. Press the Play button in Unity Editor to start the game.
-
 ## 🎮 Controls
 
 - Move: A/D
@@ -31,6 +20,15 @@ A Warriors Journey is an exciting 2D sidescroller game developed using the Unity
 - Reset Progress(In main menu) Ctrl + R
 
 ## 📺 Gameplay Footage / Screenshot
+  <tr>
+    <td><img src="https://github.com/Aaronmedhavi/SideScroll-GameProg/blob/main/side - Made with Clipchamp.gif?raw=true" width="500"></td>
+  </tr>
+<table>
+  <tr>
+    <td><img src="https://github.com/Aaronmedhavi/ProjectClips/blob/main/Screenshot 2024-10-20 235207.png?raw=true" width="400"></td>
+    <td><img src="https://github.com/Aaronmedhavi/ProjectClips/blob/main/Screenshot 2024-10-20 235032.png" width="400"></td>
+  </tr>
+</table>
 
 ## ⚙️ Mechanics
 <h3>Netcode For GameObjects</h3>
