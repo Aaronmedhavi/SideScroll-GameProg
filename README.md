@@ -33,12 +33,13 @@ A Warriors Journey is an exciting 2D sidescroller game developed using the Unity
 ## ⚙️ Mechanics
 
 ### Saving System
-Experience online multiplayer experience made possible with Netcode. Through the use of a network manager, it allows players to join the game as a host or a client in a menu. The game will start when there is 2 players in the game, the ball will spawn once all the players have joined. The built in network manager only provide one slot for the player prefab but with the use of an index based on the client ID, it's now possible for players to play with distinct sprites.
+Saving system in this game is handled using JSON, it allows players to save their progress and load their latest progress. Players can also reset their level progress in order to try and get a better time for their levels.
 
 ### Enemy Cannon
-Implementation of basic post processing which includes bloom and color grading to increase visual fidelity and enhance the player experience without sacrificing any performance.
+Enemy cannon is controlled by a script that detects the player within a certain range and fires projectiles at them. Projectiles which is a fireball prefab that are instantiated by a point within the cannon sprite and will damage the player upon impact.
 
 ### Level Design
+Level design is made by utilizing a tilemap that allows for more precise placement of the ground. Parallax is also used for the background to create a smooth and seamless background movement.
 
 ## 📚 Features and Script
 - Engaging 2D sidescroller gameplay
@@ -53,3 +54,7 @@ Implementation of basic post processing which includes bloom and color grading t
 | `GameManager.cs`  | Manages the saving and loading save file and resetting the level progress. |
 | `PlayerMovement.cs`  | Handle the player movement and animaation ensuring smooth gameplay. |
 | `etc`  | |
+
+## 📫 Contact
+If you want to provide feedback or report bugs, feel free to reach out to me here:
+- Email: aaronmedhavi@gmail.com
