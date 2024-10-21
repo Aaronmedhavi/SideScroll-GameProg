@@ -1,15 +1,7 @@
 ## ⚔️ About
 A Warriors Journey is an exciting 2D sidescroller game developed using the Unity game engine. Embark on an adventure through beautifully crafted levels, overcome challenges, and defeat enemies as you progress through the game.
 
-## 🕹️ Option 1: Download from GitHub Releases
-
-1. Go to
-   ```
-   https://github.com/Aaronmedhavi/SideScroll-GameProg/releases/tag/v0.3.0-alpha
-   ```
-2. Download the latest release.
-3. Extract the downloaded archive.
-4. Run the game executable.
+## Project Info
 
 ## 🎮 Controls
 
@@ -54,6 +46,16 @@ Level design is made by utilizing a tilemap that allows for more precise placeme
 | `GameManager.cs`  | Manages the saving and loading save file and resetting the level progress. |
 | `PlayerMovement.cs`  | Handle the player movement and animaation ensuring smooth gameplay. |
 | `etc`  | |
+
+## 🕹️ Installation
+
+1. Go to
+   ```
+   https://github.com/Aaronmedhavi/SideScroll-GameProg/releases/tag/v0.3.0-alpha
+   ```
+2. Download the latest release.
+3. Extract the downloaded archive.
+4. Run the game executable.
 
 ## 📫 Contact
 If you want to provide feedback or report bugs, feel free to reach out to me here:
