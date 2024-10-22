@@ -2,6 +2,13 @@
 A Warriors Journey is an exciting 2D sidescroller game developed using the Unity game engine. Embark on an adventure through beautifully crafted levels, overcome challenges, and defeat enemies as you progress through the game.
 
 ## Project Info
+| **Role** | **Team Size** | **Development Time** |
+|----------|---------------|---------------------|
+| Game Programmer | 1 | 1 Week |
+
+| **Name** | **Role** |
+|----------|----------|
+| Aaron Medhavi Kusnandar | Game Programmer |
 
 ## 🎮 Controls
 
