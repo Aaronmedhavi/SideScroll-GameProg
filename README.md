@@ -58,7 +58,7 @@ Level design is made by utilizing a tilemap that allows for more precise placeme
 
 1. Go to
    ```
-   https://github.com/Aaronmedhavi/SideScroll-GameProg/releases/tag/v0.3.0-alpha
+   https://aaronmedhavi.itch.io/a-warriors-journey
    ```
 2. Download the latest release.
 3. Extract the downloaded archive.
